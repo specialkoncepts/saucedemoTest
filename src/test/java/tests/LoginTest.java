@@ -1,6 +1,11 @@
+<<<<<<< HEAD:src/test/java/LoginTest.java
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+=======
+package tests;
+
+>>>>>>> main:src/test/java/tests/LoginTest.java
 import org.testng.annotations.Test;
 import utils.BrowserUtils;
 
