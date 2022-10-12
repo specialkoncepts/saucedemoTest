@@ -12,15 +12,13 @@ public class LoginTest extends BaseTest {
     @Test(testName = "US 301 - Verify standard_user can login with right password")
     public void test01() {
 
-
-        driver.get("http://automation.techleadacademy.io/#/");
-
         driver.findElement(By.id("sauce-demo")).click();
 
-
-        driver.findElement(By.id("user-name")).sendKeys();
-
+        BrowserUtils.switchToNewWindow(driver);
 
 
     }
 }
+
+
+
