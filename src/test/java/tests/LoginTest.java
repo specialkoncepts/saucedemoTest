@@ -38,11 +38,11 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(testName = "US 302")
-    public void test02() {
-
-
-    }
+//    @Test(testName = "US 302")
+//    public void test02() {
+//
+//
+//    }
 
     @Test(testName = "US 302 -  When locked out user tries to login with right password I would like to see an error"+
             "message Epic sadface: Sorry, this user has been locked out")
