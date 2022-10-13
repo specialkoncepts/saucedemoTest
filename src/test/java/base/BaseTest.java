@@ -43,12 +43,12 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
 
         extentManager.logResult(result);
-        driver.quit();
+        //driver.quit();
     }
     public void initializeDriver(String browser) {
         switch (browser){
             case"chrome":
-                System.setProperty("webdriver.chrome.driver", "C:/Users/kbaka/Desktop/Selenium/libs/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chris\\Desktop\\Selenium\\lips\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
 
