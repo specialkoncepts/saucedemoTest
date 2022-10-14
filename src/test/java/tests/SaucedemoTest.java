@@ -45,7 +45,7 @@ public class SaucedemoTest extends BaseTest {
 
     }
 
-    @Test(testName = "US 302")
+    @Test(testName = "US 302 When locked out user tries to login with right password I would like to see an error ")
     public void test02() {
 
         page.userName.sendKeys("locked_out_user");
