@@ -26,4 +26,14 @@ public class SaucedemoPage extends BasePage{
     @FindBy(id="login-button")
     public WebElement loginButton;
 
+    @FindBy(id="inventory_container")
+    public WebElement addToCart;
+
+    @FindBy(className = "shopping_cart_badge")
+    public WebElement shoppingCartDisplay;
+
+    @FindBy(xpath = "//div/button[text()='Remove']")
+    public WebElement removeItem;
+
+
 }

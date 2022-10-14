@@ -48,7 +48,7 @@ public class BaseTest {
     public void initializeDriver(String browser) {
         switch (browser){
             case"chrome":
-                System.setProperty("webdriver.chrome.driver", "D:\\!Users\\Mike\\Desktop\\Selenium\\libsSel\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\mycup\\Desktop\\Selenium\\libs\\chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
 
