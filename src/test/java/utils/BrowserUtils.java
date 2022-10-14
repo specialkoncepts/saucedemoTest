@@ -1,5 +1,4 @@
 package utils;
-
 import base.BaseTest;
 import org.openqa.selenium.WebDriver;
 
