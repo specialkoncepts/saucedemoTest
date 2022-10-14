@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.WebElement;
 import pages.SaucedemoPage;
 import base.BaseTest;
 import org.openqa.selenium.By;
@@ -8,6 +9,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.BrowserUtils;
+
+import java.util.List;
 
 public class SaucedemoTest extends BaseTest {
 
@@ -58,8 +61,34 @@ public class SaucedemoTest extends BaseTest {
 
         Assert.assertEquals(expected, actual);
 
+    }
+
+    @Test(testName = "US 303 - When problem_user logs in all items on homepage should display same images")
+    public void test03() {
+
+        page.userName.sendKeys("problem_user");
+        page.userPassword.sendKeys("secret_sauce");
+        page.click(page.loginButton);
 
 
+
+        List<WebElement> list = driver.findElements(By.xpath("//img[@src=\"/static/media/sl-404.168b1cce.jpg\"]"));
+        list.forEach(each -> Assert.assertTrue(each.getAttribute("src").equals(each.getAttribute("src"))));
+    }
+
+    @Test(testName = "US 304 - I need an option to see navigation menu. And confirm all buttons are present")
+    public void test04() {
+
+        page.userName.sendKeys("standard_user");
+        page.userPassword.sendKeys("secret_sauce");
+        page.click(page.loginButton);
+
+        driver.findElement(By.id("react-burger-menu-btn")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("inventory_sidebar_link")).getText(), "All Items");
+        Assert.assertEquals(driver.findElement(By.id("about_sidebar_link")).getText(), "About");
+        Assert.assertEquals(driver.findElement(By.id("logout_sidebar_link")).getText(), "Logout");
+        Assert.assertEquals(driver.findElement(By.id("reset_sidebar_link")).getText(), "Reset App State");
 
     }
 }
