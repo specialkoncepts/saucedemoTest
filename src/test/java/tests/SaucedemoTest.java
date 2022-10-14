@@ -91,7 +91,94 @@ public class SaucedemoTest extends BaseTest {
         Assert.assertEquals(driver.findElement(By.id("reset_sidebar_link")).getText(), "Reset App State");
 
     }
+
+    @Test(testName = "US 305 - Footer of the page should be © 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy")
+    public void test05() {
+
+        page.userName.sendKeys("standard_user");
+
+        page.userPassword.sendKeys("secret_sauce");
+
+        page.click(page.loginButton);
+
+        String expected = "© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy";
+        String actual = driver.findElement(By.xpath("//div[@class='footer_copy']")).getText();
+
+        Assert.assertEquals(actual, expected);
+
+    }
+
+    @Test(testName = "US 306 - Filter options. When user clicks the filter it should have following options:")
+    public void test06() {
+
+        page.userName.sendKeys("standard_user");
+
+        page.userPassword.sendKeys("secret_sauce");
+
+        page.click(page.loginButton);
+        String [] btn = new String[] {"az", "za", "lohi", "hilo"};
+
+        driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn_action btn_medium checkout_button']")).click();
+
+        Assert.assertEquals(driver.findElement(By.id("inventory_sidebar_link")).getText(), "All Items");
+        Assert.assertEquals(driver.findElement(By.id("about_sidebar_link")).getText(), "About");
+        Assert.assertEquals(driver.findElement(By.id("logout_sidebar_link")).getText(), "Logout");
+        Assert.assertEquals(driver.findElement(By.id("reset_sidebar_link")).getText(), "Reset App State");
+
+
+        for (int i = 0; i < 4 ; i++) {
+            String actual = driver.findElement(By.xpath("//select/option["+ (i+1) + "]")).getAttribute("value");
+            String expected = btn[i];
+            Assert.assertEquals(actual, expected);
+        }
+
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='First Name']")).getText(), "");
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Last Name']")).getText(), "");
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Zip/Postal Code']")).getText(), "");
+    }
+
+    @Test(testName = "US 307 - Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
+    public void test07() {
+
+
+        page.userName.sendKeys("standard_user");
+        page.userPassword.sendKeys("secret_sauce");
+        page.click(page.loginButton);
+
+        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='social_twitter']")).getText(), "Twitter");
+        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='social_facebook']")).getText(), "Facebook");
+        Assert.assertEquals(driver.findElement(By.xpath("//li[@class='social_linkedin']")).getText(), "LinkedIn");
+
+
+
+    }
+    @Test(testName = "US 308 -  Fields displayed where user can input their details")
+    public void test08() {
+        driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn_action btn_medium checkout_button']")).click();
+
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='First Name']")).getText(), "");
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Last Name']")).getText(), "");
+        Assert.assertEquals(driver.findElement(By.xpath("//input[@placeholder='Zip/Postal Code']")).getText(), "");
+    }
+    @Test(testName = "US 309 - Add to cart, and item should be displayed in cart view ")
+    public void test09()
+    {
+        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+        //page.addToCart.click();
+        driver.findElement(By.className("shopping_cart_badge")).isDisplayed();
+        //page.shoppingCartDisplay.isDisplayed();
+    }
+
+    @Test(testName = "US 310 - Remove from cart, user should be able to remove items from cart")
+    public void test10()
+    {
+        driver.findElement(By.xpath("//div/button[text()='Remove']")).click();
+        //page.removeItem.click();
+    }
 }
+
 
 
 
